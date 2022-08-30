@@ -1,0 +1,88 @@
+@mixin mq($break) {
+  @media only screen and (min-width: $break) {
+    @content;
+  }
+}
+
+/**
+ * $min-font: $mf
+  * $max-font: $hf
+  * $min-break: $mb
+  * $max-break: $hb
+ */
+@mixin fluid-font($mf, $hf, $mb, $hb) {
+  $df: $hf - $mf;
+  $ds: $hb - $mb;
+  @include mq($hb * 1px) {
+    :root {
+      font-size: calc(#{$mf}px + #{$df} * ((100vw - #{$mb}px) / #{$ds}));
+    }
+  }
+}
+
+@mixin font-face($font-name, $font-path) {
+  @font-face {
+    font-family: $font-name;
+    src: url($font-path + $font-name + ".otf"),
+      url($font-path + $font-name + ".ttf") format("truetype"),
+      url($font-path + $font-name + ".woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@mixin flex-center($justify) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin flex-center-vert {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-horiz {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin position($top, $right, $bottom, $left) {
+  @if $top != null {
+    top: $top;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+  @if $left != null {
+    left: $left;
+  }
+}
+
+@mixin position-abs($top, $right, $bottom, $left) {
+  position: absolute;
+  @include position($top, $right, $bottom, $left);
+}
+
+@mixin margin($top, $right, $bottom, $left) {
+  @if $top != null {
+    margin-top: $top;
+  }
+  @if $right != null {
+    margin-right: $right;
+  }
+  @if $bottom != null {
+    margin-bottom: $bottom;
+  }
+  @if $left != null {
+    margin-left: $left;
+  }
+}

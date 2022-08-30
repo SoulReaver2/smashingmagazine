@@ -1,0 +1,50 @@
+$namespace: "theme-name";
+
+$gr-brkpts: (
+  xs: 400,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+);
+
+// root font size for each screen size
+$gr-brkfts: (
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  xxl: 22,
+);
+
+/**
+ * We add a pixel unit to the font-size and screen-size values
+  * to make sure they are interpreted as pixels. the results is:
+  * $grid-breakpoints: (
+      xs: 400px,
+      sm: 576px,
+      md: 768px,
+      ...
+    );
+*/
+$grid-breakpoints: ();
+@each $breakpoint, $screen-size in $gr-brkpts {
+  $grid-breakpoints: map-merge(
+    $grid-breakpoints,
+    (
+      $breakpoint: $screen-size * 1px,
+    )
+  );
+}
+
+$grid-breakfonts: ();
+@each $breakpoint, $font-size in $gr-brkfts {
+  $grid-breakfonts: map-merge(
+    $grid-breakfonts,
+    (
+      $breakpoint: $font-size * 1px,
+    )
+  );
+}

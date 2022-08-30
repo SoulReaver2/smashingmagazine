@@ -1,0 +1,76 @@
+/**
+  * Output the fluid font sizes for each screen size
+*/
+@each $break, $screen-size in $gr-brkpts {
+  @if $break == xs {
+    :root {
+      font-size: map-get($gr-brkfts, $break) * 1px;
+    }
+  } @else {
+    @include fluid-font(
+      map-get($gr-brkfts, $prev),
+      map-get($gr-brkfts, $break),
+      map-get($gr-brkpts, $prev),
+      map-get($gr-brkpts, $break)
+    );
+  }
+  $prev: $break;
+}
+
+/**
+  * Scale factors to jump from h6 to h1
+*/
+$min-scale-factor: 1.125;
+$max-scale-factor: 1.25;
+$sc-ft: $min-scale-factor;
+
+/**
+  * Generate the scale of font sizes per screen size
+*/
+$type-scales: ();
+
+@each $breakpoint, $font-size in $grid-breakfonts {
+  $type-scales: map-merge(
+    $type-scales,
+    (
+      $breakpoint: (
+        100: $font-size * pow($sc-ft, 4),
+        200: $font-size * pow($sc-ft, 3),
+        300: $font-size * pow($sc-ft, 2),
+        400: $font-size * $sc-ft,
+        500: $font-size,
+        600: $font-size * pow($sc-ft, -1),
+      ),
+    )
+  );
+}
+
+/**
+  * Output the corresponding custom css variables with mobile first
+*/
+:root {
+  @each $screen-size, $font-sizes in $type-scales {
+    @if $screen-size == xs {
+      @each $size, $value in $font-sizes {
+        --fs-#{$size}: #{$value};
+      }
+    } @else {
+      @include mq(map-get($grid-breakpoints, $screen-size)) {
+        @each $size, $value in $font-sizes {
+          --fs-#{$size}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+/**
+  * Load custom fonts
+*/
+$font-main: "Raleway", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+  Cantarell, "Helvetica Neue";
+$font-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font-pre: "Courier 10 Pitch", courier, monospace;
+
+$line-height-body: 1.5;
+$line-height-pre: 1.6;

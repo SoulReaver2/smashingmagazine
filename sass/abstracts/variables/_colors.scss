@@ -1,0 +1,108 @@
+/**
+  * Les principales couleurs de la charte graphique.
+*/
+$base-colors: (
+  theme: rgba(231, 163, 0, 1),
+  link: crimson,
+  titles: purple,
+);
+
+/**
+  * La base palette donne la reference pour l'échelle des gradients d'une couleur.
+*/
+$base-palette: (
+  "base": #2196f3,
+  "colors": (
+    100: #bbdefb,
+    200: #90caf9,
+    300: #64b5f6,
+    400: #42a5f5,
+    500: #2196f3,
+    600: #1e88e5,
+    700: #1976d2,
+    800: #1565c0,
+    900: #0d47a1,
+  ),
+) !default;
+
+
+/**
+  * Quel fonctions utilitaires *****************************************
+*/
+@function color-diff($a, $b) {
+  $sat: saturation($a) - saturation($b);
+  $lig: lightness($a) - lightness($b);
+  $fn-sat: if($sat > 0, 'desaturate', 'saturate');
+  $fn-lig: if($lig > 0, 'darken', 'lighten');
+
+  @return (
+    adjust-hue: -(hue($a) - hue($b)),
+    #{$fn-sat}: abs($sat),
+    #{$fn-lig}: abs($lig)
+  );
+}
+
+@function palette-diff($palette) {
+  $base: map-get($palette, 'base');
+  $colors: map-get($palette, 'colors');
+  $diffs: ();
+
+  @each $shade, $color in $colors {
+    $diffs: map-merge($diffs, ($shade: color-diff($base, $color)));
+  }
+
+  @return $diffs;
+}
+
+@function apply-diff($color, $diff) {
+  @each $function, $value in $diff {
+    $color: call(get-function($function), $color, $value);
+  }
+
+  @return $color;
+}
+
+@function create-palette($base-color, $palette-diff) {
+  $palette: ();
+
+  @each $shade, $diff in $palette-diff {
+    $palette: map-merge($palette, ($shade: apply-diff($base-color, $diff)));
+  } 
+  @return $palette;
+}
+
+/**
+* extraire directement une couleur de la palette sass globale $colors
+*/
+@function get-color($label, $shade) {
+$shades: map-get($colors, $label);
+$color: map-get($shades, $shade);
+
+@return $color;
+}
+//-------------------------------------------------------------------------------
+
+
+
+// matrice differentielle de la palette de référence".
+$palette-diff: palette-diff($base-palette);
+
+// Generation des gradients de chaque couleur principale
+$colors: ();
+@each $el, $base-color in $base-colors {
+  $colors: map-merge(
+    $colors,
+    (
+      $el: create-palette($base-color, $palette-diff),
+    )
+  );
+}
+
+// Production des variables à gradients pour chaque couleur.
+:root {
+  @each $color, $shades in $colors {
+    @each $shade, $value in $shades {
+      --clr-#{$color}-#{$shade}: #{$value};
+    }
+  }
+}
