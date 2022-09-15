@@ -1,0 +1,24 @@
+@include font-face("Mija", $font-path);
+@include font-face("Nunito", $font-path);
+
+$font-primary: "Mija", sans-serif;
+$font-secondary: "Nunito", sans-serif;
+
+$font-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font-pre: "Courier 10 Pitch", courier, monospace;
+
+$line-height-body: 1.5;
+$line-height-pre: 1.6;
+
+input,
+select,
+optgroup,
+textarea {
+  color: $color-text-main;
+  font-family: $font-primary;
+  font-size: 1rem;
+  line-height: $line-height-body;
+}
+
+@import "headings";
+@import "copy";
