@@ -6,17 +6,17 @@ $gr-brkpts: (
   md: 768,
   lg: 992,
   xl: 1200,
-  xxl: 1400,
+  xxl: 1400
 );
 
 // root font size for each screen size
 $gr-brkfts: (
-  xs: 12,
-  sm: 14,
-  md: 16,
+  xs: 16,
+  sm: 17,
+  md: 18,
   lg: 18,
-  xl: 20,
-  xxl: 22,
+  xl: 19,
+  xxl: 20
 );
 
 /**
@@ -34,7 +34,7 @@ $grid-breakpoints: ();
   $grid-breakpoints: map-merge(
     $grid-breakpoints,
     (
-      $breakpoint: $screen-size * 1px,
+      $breakpoint: $screen-size * 1px
     )
   );
 }
@@ -44,7 +44,7 @@ $grid-breakfonts: ();
   $grid-breakfonts: map-merge(
     $grid-breakfonts,
     (
-      $breakpoint: $font-size * 1px,
+      $breakpoint: $font-size * 1px
     )
   );
 }

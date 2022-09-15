@@ -39,8 +39,8 @@ $type-scales: ();
         300: $font-size * pow($sc-ft, 2),
         400: $font-size * $sc-ft,
         500: $font-size,
-        600: $font-size * pow($sc-ft, -1),
-      ),
+        600: $font-size * pow($sc-ft, -1)
+      )
     )
   );
 }
@@ -63,15 +63,3 @@ $type-scales: ();
     }
   }
 }
-
-/**
-  * Load custom fonts
-*/
-
-$font-main: "Raleway", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
-  Cantarell, "Helvetica Neue";
-$font-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-$font-pre: "Courier 10 Pitch", courier, monospace;
-
-$line-height-body: 1.5;
-$line-height-pre: 1.6;

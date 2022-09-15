@@ -1,10 +1,11 @@
 /**
   * Les principales couleurs de la charte graphique.
 */
+
 $base-colors: (
   theme: #d33a2c,
   link: #006f6c,
-  titles: #333,
+  titles: #333333
 );
 
 /**
@@ -21,8 +22,8 @@ $base-palette: (
     600: #1e88e5,
     700: #1976d2,
     800: #1565c0,
-    900: #0d47a1,
-  ),
+    900: #0d47a1
+  )
 ) !default;
 
 /**
@@ -37,7 +38,7 @@ $base-palette: (
   @return (
     adjust-hue: -
       (
-        hue($a) - hue($b),
+        hue($a) - hue($b)
       ),
     #{$fn-sat}: abs($sat),
     #{$fn-lig}: abs($lig)
@@ -53,7 +54,7 @@ $base-palette: (
     $diffs: map-merge(
       $diffs,
       (
-        $shade: color-diff($base, $color),
+        $shade: color-diff($base, $color)
       )
     );
   }
@@ -76,7 +77,7 @@ $base-palette: (
     $palette: map-merge(
       $palette,
       (
-        $shade: apply-diff($base-color, $diff),
+        $shade: apply-diff($base-color, $diff)
       )
     );
   }
@@ -103,7 +104,7 @@ $colors: ();
   $colors: map-merge(
     $colors,
     (
-      $el: create-palette($base-color, $palette-diff),
+      $el: create-palette($base-color, $palette-diff)
     )
   );
 }
@@ -116,3 +117,8 @@ $colors: ();
     }
   }
 }
+
+// autres acouleurs par défaut
+$color__background-body: #fff;
+$color-text-main: #333;
+$color__background-hr: gray;
