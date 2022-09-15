@@ -51,16 +51,12 @@
 --------------------------------------------- */
 @import "sass/generic/box-sizing";
 
-// generate a color map
-/*
-@import "./sass/variables";
-@import "./sass/mixins";
-@import "./sass/functions";
-@import "./sass/typo";
-@import "./sass/colors";
-*/
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "sass/base/base";
 
-div {
-  color: red;
-  width: null;
-}
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "sass/components/components";
