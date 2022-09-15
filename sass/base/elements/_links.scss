@@ -1,0 +1,23 @@
+a {
+  color: var(--clr-link-500);
+  transition: all 300ms ease-in-out;
+
+  &:visited {
+    color: var(--clr-link-800);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--clr-link-300);
+  }
+
+  &:focus {
+    outline: thin dotted;
+  }
+
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}

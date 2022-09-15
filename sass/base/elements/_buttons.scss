@@ -1,0 +1,11 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 1px solid;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  line-height: 1;
+  padding: 0.6em 1em 0.4em;
+}
