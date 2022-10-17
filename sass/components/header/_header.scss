@@ -354,3 +354,51 @@ $clr-night-500: #162c35;
   @include box(25px);
   background: $svg-cross-red no-repeat center center;
 }
+
+//-----------------------------------------------------------------------------
+.subnav__header {
+  padding-top: 0.1rem;
+  box-shadow: 0 4px 20px 0 rgb(0 0 0 / 12%);
+}
+.subnav {
+  display: block;
+}
+
+.subnav__primary {
+  @include flex-center(flex-start);
+  padding: 0.4em 0;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+.subnav-item {
+  display: inline-block;
+  padding-left: 0.65rem;
+  margin-right: 9px;
+}
+
+.subnav-item-link {
+  font-family: $font-primary;
+  font-size: 0.8em;
+  color: var(--clr-theme-500);
+  display: block;
+  min-width: max-content;
+  padding: 0.3rem calc(0.8rem - 2px);
+  border-radius: 10px;
+  border: 1px solid #fee0e0;
+  background-color: #ffe7e7;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px;
+  transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+  &:hover {
+    //padding: calc(0.5rem - 1px) calc(1rem - 1px);
+    color: var(--clr-theme-500);
+    border: 1px solid var(--clr-theme-500);
+  }
+  &:visited {
+    color: var(--clr-theme-500);
+  }
+}
+
+// --------------------------------------------------------------------
