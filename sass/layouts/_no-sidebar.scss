@@ -1,0 +1,23 @@
+/*
+.no-sidebar.site-main-wrapper {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: calc(100% - #{$size__site-sidebar});
+  @media screen and (max-width: 52rem) {
+    grid-template-columns: auto;
+  }
+  grid-template-areas: "main";
+}
+//*/
+
+//*
+.no-sidebar.site-main-wrapper {
+  display: block;
+  .site-main {
+    width: 75%;
+    margin: auto;
+    @media screen and (max-width: 52rem) {
+      width: 100%;
+    }
+  }
+}

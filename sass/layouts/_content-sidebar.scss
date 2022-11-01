@@ -1,0 +1,39 @@
+$size__site-sidebar: 33.33%;
+
+.row {
+  display: grid;
+  grid-template-columns: 58.33% 33.33%;
+  grid-template-areas: "main sidebar";
+  grid-column-gap: 8%;
+  @media screen and (max-width: 60rem) {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    grid-template-areas: "main" "sidebar";
+  }
+}
+
+.col-x {
+  grid-area: main;
+  //height: 200px;
+  //background-color: crimson;
+}
+
+.col-y {
+  grid-area: sidebar;
+  //height: 150px;
+  //background-color: dodgerblue;
+}
+
+.site-header {
+  height: auto;
+}
+
+.site-main {
+  height: auto;
+}
+
+.site-footer {
+  height: auto;
+}
+
+@import "no-sidebar";
