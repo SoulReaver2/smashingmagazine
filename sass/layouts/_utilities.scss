@@ -1,0 +1,14 @@
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    width: 92%;
+    margin: auto;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    width: 1168px; //72rem;
+    margin: auto;
+  }
+}
