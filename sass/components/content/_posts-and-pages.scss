@@ -350,6 +350,7 @@ a.guide-cta-link {
   color: #fff;
   padding-top: 2em;
   padding-bottom: 3em;
+  min-height: 100vh;
 }
 
 .layout-1 {
@@ -405,5 +406,40 @@ a.guide-cta-link {
     display: inline-block;
     margin: 0.3em 0;
     margin-right: 0.5em;
+  }
+}
+
+//------------------------------------------------------------------
+$color-workshop: #1b71bb;
+.workshops {
+  background-color: $color-workshop;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 60%);
+  color: #fff;
+  padding: 3.5em 0;
+}
+
+.w-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    margin-bottom: 1em;
+  }
+  h1 {
+    font-family: $font-primary;
+    font-size: 2.5em;
+    max-width: 50vw;
+    text-align: center;
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    max-width: 55vw;
+    margin: 1em auto 2em;
+    font-size: 1.2em;
+    text-align: center;
   }
 }
