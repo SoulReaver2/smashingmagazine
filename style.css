@@ -1249,21 +1249,56 @@ input[type=submit] {
   display: block;
   width: 100%;
   height: 100%;
-  border: 7px solid var(--clr-theme-500);
-  border-radius: 1em;
-  transform: rotateZ(-5deg);
+  transform: rotateZ(11deg) scale(1.2);
   -o-object-fit: cover;
      object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
-.author-post__vignette:after {
-  content: "";
-  position: absolute;
+
+.author-post__bio-image {
   width: 100%;
-  bottom: -3px;
-  left: 10px;
-  z-index: -1;
-  transform: scale(0.95);
-  box-shadow: 0px 0px 8px 2px #000000;
+  height: 100%;
+}
+.author-post__bio-image::before {
+  display: block;
+  content: "";
+  height: 30%;
+  width: 160%;
+  position: absolute;
+  top: 89%;
+  left: -30%;
+  right: 0;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI8AAAASCAYAAABim40OAAACuElEQVRogc1XUZJjIQjEzN7/yMl8ucP0dkNjXrKh6pWAqERaICveR+vD96vo8cazOvoYX54NwOl6Z52ycc907E4C4a45DfKrwHH5vpPgd7aTYKNOyUvYKL7zRZG6WNRP5cne7pxrMwHLEbCqS3aDMglwpcvjMmTGVz4wejQ86lDfjZ0OeSY/az/VMaJ2XQZA/QQQChSKV99N8OpjvuHvUsGt+ErX2bI9q7Hy0dE580pnZ0R1uTi/eSVX2SLrbmKeAeQG34qIL2KDozo/kwosBv4Ouk5WOheMyrfK5t1Z8K++Ak9XVjK/ZRW8LnMgYDZQtpx5lBFoERxI//z40EFmQLgn2R27PZkP0fDVGmaj5thdoE7JEREPBR6nFJ1+CCAFgq9mVF91dhUcBRgGHMWjju0TZN7xi+nVGmaH8wG2IeaUHH+ibyqRTuxZCVGyAhgrZQi0KrtlYgHYAV1JXvET8IjfF7jnb4mPpMtg2TZbr0rpSnwQO9SzjLAauxV83Zj2j1FU9QtX0fQMfD1VM6zWn9D00agz3fOr866OwRF1mUe9EmaDL8d9HflF5jS/M8Yd1rHzsWzt87HMdr0D+sB6HixPXV/EyqH6QvCqBOE9qPXMTsmMqI3TMG9eNc7P9EJYYvK/KdUsZz0raZF06Hu+DCxBD+BZv1L1RKeAcXsZpnNtgtiEmEOeyRHx0zBvchtnHBWAUFa66q86ggltuj5HZU73pVdAcMHhAEX5xHys/Ge/j43IO/IvfZdxmM4FVDdOs1X1Twr3YWciTYPjZopXZILOxgWElVGIjs5V/Yw752QrxU/A1fGdL4yciz551U45qILa+fbsOmeutekud2I7BeJJhmPr3L07KlN0Y/eMzpmb2JzYntgfXfIr9nLWXgl0RuPLO1xzxdqPOPNK8FxJn+rXhP4HON5K31PHDhmjlm6fAAAAAElFTkSuQmCC");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  transform-origin: 30% 50%;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+.author-post__bio-image:hover::before {
+  opacity: 0;
+}
+
+.author-post__picture {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  transform: rotateZ(-11deg);
+  border: 6px solid var(--clr-theme-500);
+  border-radius: 1em;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: 0 100%;
+}
+.author-post__picture:hover {
+  transform: rotateZ(0deg);
+}
+.author-post__picture:hover img {
+  transform: rotateZ(0) scale(1.2);
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .author-post__primary .author-post__vignette {
